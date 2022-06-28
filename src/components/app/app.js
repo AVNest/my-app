@@ -17,15 +17,32 @@ class App extends Component {
                 {name: 'Anatoly N.', salary: 15000, increase: true, id: 3}
             ]
         }
+        this.maxId = 4;
     }
 
     deleteItem = (id) => {
-        this.setState(({data}) => {
+        this.setState(({data}) => { 
             return {
                 data: data.filter(item => item.id !== id)
             }
         })
     }
+
+    addItem = (name, salary) => {
+        const newItem = {
+            name,
+            salary,
+            increase: false,
+            id: this.maxId++
+        }
+        this.setState(({data}) => {
+            const newArr = [...data, newItem];
+            return {
+                data: newArr
+            }
+        });
+    }
+
     render() {  
         return(
             <div className="app">
@@ -38,7 +55,7 @@ class App extends Component {
                 <EmployersList 
                     data={this.state.data}
                     onDelete={this.deleteItem}/>
-                <EmployersAddForm/>
+                <EmployersAddForm onAdd={this.addItem}/>
             </div>
         );
     }
