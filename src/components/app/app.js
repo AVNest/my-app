@@ -2,8 +2,8 @@ import { Component } from 'react';
 import AppInfo from '../app-info/app-info';
 import SearchPanel from '../search-panel/search-panel';
 import AppFilter from '../app-filter/app-filter';
-import EmployersList from '../employers-list/employers-list';
-import EmployersAddForm from '../employers-add-form/employers-add-form';
+import EmployeesList from '../employees-list/employees-list';
+import EmployeesAddForm from '../employees-add-form/employees-add-form';
 
 import './app.css';
 
@@ -87,12 +87,12 @@ class App extends Component {
 
     render() {
         const {data, term, filter} = this.state;
-        const employers = this.state.data.length;
+        const employees = this.state.data.length;
         const increased = this.state.data.filter(item => item.increase).length;
         const visibleData = this.filterPost(this.searchEmp(data, term), filter);
         return(
             <div className="app">
-                <AppInfo employers={employers}
+                <AppInfo employees={employees}
                          increased={increased}
                          />
     
@@ -100,11 +100,11 @@ class App extends Component {
                     <SearchPanel onUpdateSearch={this.onUpdateSearch}/>
                     <AppFilter filter={filter} onFilterSelect={this.onFilterSelect}/>
                 </div>
-                <EmployersList 
+                <EmployeesList 
                     data={visibleData}
                     onDelete={this.deleteItem}
                     onToggleProp={this.onToggleProp}/>
-                <EmployersAddForm onAdd={this.addItem}/>
+                <EmployeesAddForm onAdd={this.addItem}/>
             </div>
         );
     }

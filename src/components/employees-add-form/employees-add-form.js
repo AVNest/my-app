@@ -1,14 +1,12 @@
 import { Component } from 'react';
 
-import './employers-add-form.css';
+// import './employees-add-form.css';
+import './emploees-add-form.scss';
 
-class EmployersAddForm extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            name: '',
-            salary: ''
-        }
+class EmployeesAddForm extends Component {
+    state = {
+        name: '',
+        salary: ''
     }
 
     onValueChange = (e) => {
@@ -26,6 +24,12 @@ class EmployersAddForm extends Component {
             salary: ""
         })
     }
+
+    static onLog = () => {
+        console.log('Hey');
+    }
+
+    static logger = 'on';
 
     render() {
         const {name, salary} = this.state;
@@ -57,4 +61,7 @@ class EmployersAddForm extends Component {
     }
 }
 
-export default EmployersAddForm
+EmployeesAddForm.onLog();
+console.log(EmployeesAddForm.logger);
+
+export default EmployeesAddForm
